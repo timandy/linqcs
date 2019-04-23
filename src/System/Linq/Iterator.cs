@@ -113,7 +113,7 @@ namespace System.LinqCore
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-            void IEnumerator.Reset() => throw Error.NotSupported();
+            void IEnumerator.Reset() => ThrowHelper.ThrowNotSupportedException();
         }
     }
 }

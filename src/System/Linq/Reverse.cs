@@ -13,7 +13,7 @@ namespace System.LinqCore
         {
             if (source == null)
             {
-                throw Error.ArgumentNull(nameof(source));
+                ThrowHelper.ThrowArgumentNullException(ExceptionArgument.source);
             }
 
             return new ReverseIterator<TSource>(source);
