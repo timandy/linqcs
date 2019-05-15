@@ -12,7 +12,7 @@ namespace System.LinqCore
         {
             public override IEnumerable<TResult> Select<TResult>(Func<int, TResult> selector)
             {
-                return new SelectIPartitionIterator<int, TResult>(this, selector);
+                return new SelectRangeIterator<TResult>(_start, _end, selector);
             }
 
             public int[] ToArray()

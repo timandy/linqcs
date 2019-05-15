@@ -4,6 +4,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace System.LinqCore
 {
@@ -40,6 +41,8 @@ namespace System.LinqCore
 
             public IPartition<TResult> Skip(int count)
             {
+                Debug.Assert(count > 0);
+
                 if (count >= _count)
                 {
                     return EmptyPartition<TResult>.Instance;
@@ -50,6 +53,8 @@ namespace System.LinqCore
 
             public IPartition<TResult> Take(int count)
             {
+                Debug.Assert(count > 0);
+
                 if (count >= _count)
                 {
                     return this;

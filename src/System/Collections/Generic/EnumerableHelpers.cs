@@ -73,7 +73,7 @@ namespace System.Collections.Generic
                                     newLength = MaxArrayLength <= count ? count + 1 : MaxArrayLength;
                                 }
 
-                                Array.Resize(ref arr, newLength);
+                                Array.Resize(ref arr, newLength); // TODO-NULLABLE: https://github.com/dotnet/roslyn/issues/26761
                             }
 
                             arr[count++] = en.Current;
