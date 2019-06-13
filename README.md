@@ -2,4 +2,4 @@
 
 # Source code of .net linq.
 
-- update corefx to `27dae83598c87e3cf4b139c8c981c13fe8e9a81e`
+- update corefx to `dda4588873cde2740d15e32749ccfd13eb33db07`
