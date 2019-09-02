@@ -15,7 +15,7 @@ namespace System.LinqCore
                 var set = new Set<TSource>(_comparer);
                 for (int index = 0; ; ++index)
                 {
-                    IEnumerable<TSource> enumerable = GetEnumerable(index);
+                    IEnumerable<TSource>? enumerable = GetEnumerable(index);
                     if (enumerable == null)
                     {
                         return set;

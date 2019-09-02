@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using static System.LinqCore.Utilities;
 
 namespace System.LinqCore
@@ -47,7 +48,7 @@ namespace System.LinqCore
 
             if (source is IPartition<TSource> partition)
             {
-                IEnumerable<TResult> result = null;
+                IEnumerable<TResult>? result = null;
                 CreateSelectIPartitionIterator(selector, partition, ref result);
                 if (result != null)
                 {
@@ -59,7 +60,7 @@ namespace System.LinqCore
         }
 
         static partial void CreateSelectIPartitionIterator<TResult, TSource>(
-            Func<TSource, TResult> selector, IPartition<TSource> partition, ref IEnumerable<TResult> result);
+            Func<TSource, TResult> selector, IPartition<TSource> partition, [NotNull] ref IEnumerable<TResult>? result);
 
         public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, TResult> selector)
         {
@@ -99,7 +100,7 @@ namespace System.LinqCore
         {
             private readonly IEnumerable<TSource> _source;
             private readonly Func<TSource, TResult> _selector;
-            private IEnumerator<TSource> _enumerator;
+            private IEnumerator<TSource>? _enumerator;
 
             public SelectEnumerableIterator(IEnumerable<TSource> source, Func<TSource, TResult> selector)
             {
@@ -132,6 +133,7 @@ namespace System.LinqCore
                         _state = 2;
                         goto case 2;
                     case 2:
+                        Debug.Assert(_enumerator != null);
                         if (_enumerator.MoveNext())
                         {
                             _current = _selector(_enumerator.Current);
@@ -243,7 +245,7 @@ namespace System.LinqCore
         {
             private readonly IList<TSource> _source;
             private readonly Func<TSource, TResult> _selector;
-            private IEnumerator<TSource> _enumerator;
+            private IEnumerator<TSource>? _enumerator;
 
             public SelectIListIterator(IList<TSource> source, Func<TSource, TResult> selector)
             {
@@ -264,6 +266,7 @@ namespace System.LinqCore
                         _state = 2;
                         goto case 2;
                     case 2:
+                        Debug.Assert(_enumerator != null);
                         if (_enumerator.MoveNext())
                         {
                             _current = _selector(_enumerator.Current);

@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace System.LinqCore
 {
@@ -83,6 +84,7 @@ namespace System.LinqCore
             return default;
         }
 
+        [return: MaybeNull]
         public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source)
         {
             if (source == null)
@@ -95,7 +97,7 @@ namespace System.LinqCore
                 switch (list.Count)
                 {
                     case 0:
-                        return default(TSource);
+                        return default!;
                     case 1:
                         return list[0];
                 }
@@ -106,7 +108,7 @@ namespace System.LinqCore
                 {
                     if (!e.MoveNext())
                     {
-                        return default(TSource);
+                        return default!;
                     }
 
                     TSource result = e.Current;
@@ -121,6 +123,7 @@ namespace System.LinqCore
             return default;
         }
 
+        [return: MaybeNull]
         public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
             if (source == null)
@@ -153,7 +156,7 @@ namespace System.LinqCore
                 }
             }
 
-            return default(TSource);
+            return default!;
         }
     }
 }

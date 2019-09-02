@@ -2,9 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace System.LinqCore
 {
@@ -20,7 +20,7 @@ namespace System.LinqCore
                 TResult[] array = new TResult[_count];
                 if (_current != null)
                 {
-                    ArrayUtils.Fill(array, _current);
+                    Array.Fill(array, _current);
                 }
 
                 return array;
@@ -63,6 +63,7 @@ namespace System.LinqCore
                 return new RepeatIterator<TResult>(_current, count);
             }
 
+            [return: MaybeNull]
             public TResult TryGetElementAt(int index, out bool found)
             {
                 if ((uint)index < (uint)_count)
@@ -72,7 +73,7 @@ namespace System.LinqCore
                 }
 
                 found = false;
-                return default(TResult);
+                return default!;
             }
 
             public TResult TryGetFirst(out bool found)
