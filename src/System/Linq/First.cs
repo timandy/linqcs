@@ -17,7 +17,7 @@ namespace System.LinqCore
                 ThrowHelper.ThrowNoElementsException();
             }
 
-            return first;
+            return first!;
         }
 
         public static TSource First<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
@@ -28,7 +28,7 @@ namespace System.LinqCore
                 ThrowHelper.ThrowNoMatchException();
             }
 
-            return first;
+            return first!;
         }
 
         [return: MaybeNull]

@@ -17,7 +17,7 @@ namespace System.LinqCore
                 ThrowHelper.ThrowNoElementsException();
             }
 
-            return last;
+            return last!;
         }
 
         public static TSource Last<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
@@ -28,7 +28,7 @@ namespace System.LinqCore
                 ThrowHelper.ThrowNoMatchException();
             }
 
-            return last;
+            return last!;
         }
 
         [return: MaybeNull]

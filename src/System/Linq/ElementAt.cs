@@ -21,7 +21,7 @@ namespace System.LinqCore
                 TSource element = partition.TryGetElementAt(index, out bool found);
                 if (found)
                 {
-                    return element;
+                    return element!;
                 }
             }
             else

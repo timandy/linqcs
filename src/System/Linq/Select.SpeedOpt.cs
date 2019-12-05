@@ -572,7 +572,7 @@ namespace System.LinqCore
                 bool sourceFound;
                 TSource input = _source.TryGetElementAt(index, out sourceFound);
                 found = sourceFound;
-                return sourceFound ? _selector(input) : default!;
+                return sourceFound ? _selector(input!) : default!;
             }
 
             [return: MaybeNull]
@@ -581,7 +581,7 @@ namespace System.LinqCore
                 bool sourceFound;
                 TSource input = _source.TryGetFirst(out sourceFound);
                 found = sourceFound;
-                return sourceFound ? _selector(input) : default!;
+                return sourceFound ? _selector(input!) : default!;
             }
 
             [return: MaybeNull]
@@ -590,7 +590,7 @@ namespace System.LinqCore
                 bool sourceFound;
                 TSource input = _source.TryGetLast(out sourceFound);
                 found = sourceFound;
-                return sourceFound ? _selector(input) : default!;
+                return sourceFound ? _selector(input!) : default!;
             }
 
             private TResult[] LazyToArray()
@@ -683,6 +683,7 @@ namespace System.LinqCore
         /// </summary>
         /// <typeparam name="TSource">The type of the source list.</typeparam>
         /// <typeparam name="TResult">The type of the mapped items.</typeparam>
+        [DebuggerDisplay("Count = {Count}")]
         private sealed class SelectListPartitionIterator<TSource, TResult> : Iterator<TResult>, IPartition<TResult>
         {
             private readonly IList<TSource> _source;
