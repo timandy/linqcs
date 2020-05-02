@@ -2,11 +2,10 @@
   <PropertyGroup>
     <AssemblyName>System.Linq</AssemblyName>
     <RootNamespace>System.Linq</RootNamespace>
-    <Configurations>netcoreapp-Debug;netcoreapp-Release;</Configurations>
+    <TargetFrameworks>netcoreapp5.0</TargetFrameworks>
     <Nullable>enable</Nullable>
-    <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Resources\"/>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>
