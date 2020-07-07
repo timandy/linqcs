@@ -35,10 +35,10 @@ namespace System.LinqCore
 
         public bool MoveNext() => false;
 
-        [ExcludeFromCodeCoverage] // Shouldn't be called, and as undefined can return or throw anything anyway.
+        [ExcludeFromCodeCoverage(Justification = "Shouldn't be called, and as undefined can return or throw anything anyway")]
         public TElement Current => default!;
 
-        [ExcludeFromCodeCoverage] // Shouldn't be called, and as undefined can return or throw anything anyway.
+        [ExcludeFromCodeCoverage(Justification = "Shouldn't be called, and as undefined can return or throw anything anyway")]
         [MaybeNull]
         object IEnumerator.Current => default!;
 
