@@ -2,4 +2,4 @@
 
 # Source code of .net linq.
 
-- update runtime to `2d143f1e1760fe14593bafcc9cb729f2f264c049`
+- update runtime to `4f257c73f53d454adb106301b5bfcf57c79ba485`
