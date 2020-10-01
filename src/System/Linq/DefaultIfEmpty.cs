@@ -8,7 +8,7 @@ namespace System.LinqCore
 {
     public static partial class Enumerable
     {
-        public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source) =>
+        public static IEnumerable<TSource?> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source) =>
             DefaultIfEmpty(source, default!);
 
         public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source, TSource defaultValue)

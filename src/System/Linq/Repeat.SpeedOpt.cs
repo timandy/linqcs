@@ -62,8 +62,7 @@ namespace System.LinqCore
                 return new RepeatIterator<TResult>(_current, count);
             }
 
-            [return: MaybeNull]
-            public TResult TryGetElementAt(int index, out bool found)
+            public TResult? TryGetElementAt(int index, out bool found)
             {
                 if ((uint)index < (uint)_count)
                 {
@@ -72,7 +71,7 @@ namespace System.LinqCore
                 }
 
                 found = false;
-                return default!;
+                return default;
             }
 
             public TResult TryGetFirst(out bool found)
